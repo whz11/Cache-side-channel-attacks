@@ -28,5 +28,6 @@ int main() {
     printf("Putting '%s' in memory, address %p\n", (char*)shared_memory, shared_memory);
     getchar();
     munmap(shared_memory, secret_size);
+    shm_unlink("/shared_memory");
     return 0;
 }

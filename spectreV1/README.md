@@ -2,11 +2,10 @@
 魔改[Example of using revealed "Spectre" exploit from 2 Jan 2018 (CVE-2017-5753 and CVE-2017-5715)](https://github.com/Eugnis/spectre-attack)
 
 拆成`attack.c`和 `victim.c`,secret数组在受害者进程中开启共享内存，攻击进程通过共享内存实现攻击。
+可以通过CPU亲和性的方式将两个程序绑定在不同的核上。现在还有一个疑点是victim_function是应该放在victim程序还是由attack程序构造，这里还是放在attack中。
 
 ```bash
-gcc -c attack.c victim.c
-gcc -o attack attack.o -lrt
-gcc -o victim victim.o -lrt
+make
 ./victim
 
 Putting 'Test shared memory-based attack.' in memory, address 0x7f989ad5a000
